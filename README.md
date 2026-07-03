@@ -32,14 +32,12 @@ plan is written, for any repo.
 
 See [docs/how-it-works.md](docs/how-it-works.md) for the full mechanism.
 
-<!--
 ## Demo
 
-Drop a screenshot or GIF at docs/demo.png (a repo appearing in Obsidian's vault
-switcher right after a plan is written), then uncomment this section:
+![The obsidian-hook repo open as a vault in Obsidian, showing a Superpowers plan rendered in the reading pane and the repo selected in the vault switcher](docs/demo.png)
 
-![A repo appearing in Obsidian's vault switcher after a plan is written](docs/demo.png)
--->
+A Superpowers plan written to `docs/superpowers/plans/`, viewed in Obsidian — the
+repo was registered as a vault automatically the moment the plan was saved.
 
 ## Compatibility
 
