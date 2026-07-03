@@ -25,14 +25,14 @@
 - Consumes: the existing `roundtrip` job and `test/roundtrip.sh` (unchanged).
 - Produces: nothing downstream depends on this; the deliverable is a warning-free green CI run.
 
-- [ ] **Step 1: Establish the failing signal**
+- [x] **Step 1: Establish the failing signal**
 
 Confirm the current deprecation annotation exists so we know what "fixed" looks like.
 
 Run: `gh run view --log | grep -i "Node.js 20 is deprecated" | head -1`
 Expected: a line reporting `actions/checkout@v4` and `actions/setup-node@v4` are forced onto Node 24.
 
-- [ ] **Step 2: Bump `actions/checkout`**
+- [x] **Step 2: Bump `actions/checkout`**
 
 In `.github/workflows/test.yml`, change:
 
@@ -46,7 +46,7 @@ to:
       - uses: actions/checkout@v5
 ```
 
-- [ ] **Step 3: Bump `actions/setup-node`**
+- [x] **Step 3: Bump `actions/setup-node`**
 
 In the same file, change:
 
@@ -64,7 +64,7 @@ to:
           node-version: '20'
 ```
 
-- [ ] **Step 4: Commit and push**
+- [x] **Step 4: Commit and push**
 
 ```bash
 git add .github/workflows/test.yml
@@ -72,7 +72,7 @@ git commit -m "ci: bump checkout and setup-node to v5"
 git push origin main
 ```
 
-- [ ] **Step 5: Verify the run is green and warning-free**
+- [x] **Step 5: Verify the run is green and warning-free**
 
 Run: `gh run watch $(gh run list --limit 1 --json databaseId -q '.[0].databaseId') --exit-status`
 Expected: both `roundtrip (ubuntu-latest)` and `roundtrip (macos-latest)` pass, and `gh run view --log | grep -i "Node.js 20 is deprecated"` returns nothing.
