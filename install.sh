@@ -24,6 +24,19 @@ if [ -z "$NODE_BIN" ]; then
   exit 1
 fi
 
+# --- Sanity check: has Obsidian ever run? -----------------------------------
+# The hook edits obsidian.json, which Obsidian creates on first launch. If its
+# parent dir is missing, registration still works but the hook stays a silent
+# no-op until Obsidian has run at least once — so warn, don't fail.
+case "$(uname -s)" in
+  Darwin) OBS_DIR="$HOME/Library/Application Support/obsidian" ;;
+  *)      OBS_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/obsidian" ;;
+esac
+if [ ! -d "$OBS_DIR" ]; then
+  echo "note: Obsidian config dir not found ($OBS_DIR)." >&2
+  echo "      Install and launch Obsidian at least once, then this hook will register vaults." >&2
+fi
+
 # --- Copy the hook script ---------------------------------------------------
 mkdir -p "$HOOKS_DIR"
 cp "$HOOK_SRC" "$HOOK_DST"

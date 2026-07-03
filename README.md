@@ -32,6 +32,23 @@ plan is written, for any repo.
 
 See [docs/how-it-works.md](docs/how-it-works.md) for the full mechanism.
 
+<!--
+## Demo
+
+Drop a screenshot or GIF at docs/demo.png (a repo appearing in Obsidian's vault
+switcher right after a plan is written), then uncomment this section:
+
+![A repo appearing in Obsidian's vault switcher after a plan is written](docs/demo.png)
+-->
+
+## Compatibility
+
+Developed and tested on **macOS**. The script also computes the correct `obsidian.json`
+location for **Windows** (`%APPDATA%\obsidian`) and **Linux**
+(`$XDG_CONFIG_HOME/obsidian`), but those paths are currently unverified — reports welcome.
+`install.sh`/`uninstall.sh` are bash scripts and expect a POSIX shell (macOS, Linux, WSL,
+or Git Bash on Windows).
+
 ## Requirements
 
 - [Node.js](https://nodejs.org) (any recent version) on your `PATH`
